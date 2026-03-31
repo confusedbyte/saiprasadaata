@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sai Prasad Chakki Fresh Aata — Pure Goodness, Every Grain</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #F5A623;
+    --gold-light: #FFD475;
+    --gold-dark: #C8811A;
+    --cream: #FDF6EC;
+    --cream-dark: #F5ECD8;
+    --orange: #E07B39;
+    --green: #2C5F2E;
+    --green-light: #3D7A40;
+    --offwhite: #FAF7F0;
+    --text-dark: #2A1F0E;
+    --text-mid: #5C4A2A;
+    --text-light: #8B7355;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; background: var(--offwhite); color: var(--text-dark); overflow-x: hidden; }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    padding: 0 5%; height: 72px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(253,246,236,0.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(245,166,35,0.2);
+    transition: box-shadow 0.3s;
+  }
+  nav.scrolled { box-shadow: 0 4px 30px rgba(200,129,26,0.15); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .wheat-icon { font-size: 28px; display: inline-block; animation: sway 3s ease-in-out infinite; }
+  @keyframes sway { 0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)} }
+  .nav-logo-text { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--green); line-height: 1.1; }
+  .nav-logo-text span { display: block; font-size: 0.68rem; font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--gold-dark); letter-spacing: 2px; text-transform: uppercase; }
+  .nav-links { display: flex; gap: 30px; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--text-mid); font-size: 0.88rem; font-weight: 700; letter-spacing: 0.5px; transition: color 0.2s; position: relative; }
+  .nav-links a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:2px; background:var(--gold); border-radius:2px; transition:width 0.3s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a:hover::after { width: 100%; }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:4px; }
+  .hamburger span { width:26px; height:2.5px; background:var(--green); border-radius:2px; transition:all 0.3s; }
+  .mobile-menu { display:none; position:fixed; top:72px; left:0; right:0; background:var(--cream); padding:24px 5%; border-bottom:2px solid var(--gold-light); z-index:999; flex-direction:column; gap:18px; }
+  .mobile-menu.open { display:flex; }
+  .mobile-menu a { text-decoration:none; color:var(--text-dark); font-size:1.05rem; font-weight:700; padding:8px 0; border-bottom:1px solid rgba(245,166,35,0.2); }
+
+  /* HERO */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FDF0D5 0%, #FDE8B8 40%, #FDDFA0 70%, #F5C96A 100%);
+    display: flex; align-items: center; padding: 100px 5% 60px;
+    position: relative; overflow: hidden;
+  }
+  #home::before { content:''; position:absolute; top:-100px; right:-100px; width:600px; height:600px; background:radial-gradient(circle,rgba(224,123,57,0.15) 0%,transparent 70%); border-radius:50%; }
+  .hero-content { max-width: 580px; z-index: 1; }
+  .hero-devanagari { font-size:0.82rem; color:var(--gold-dark); letter-spacing:4px; font-weight:700; margin-bottom:14px; opacity:0; animation:fadeUp 0.8s ease forwards 0.2s; }
+  .hero-title { font-size:clamp(2.6rem,6vw,4.8rem); font-weight:700; color:var(--green); line-height:1.1; margin-bottom:20px; opacity:0; animation:fadeUp 0.8s ease forwards 0.4s; }
+  .hero-title em { font-style:italic; color:var(--orange); }
+  .hero-subtitle { font-size:1.05rem; color:var(--text-mid); line-height:1.75; margin-bottom:36px; opacity:0; animation:fadeUp 0.8s ease forwards 0.6s; }
+  .hero-btns { display:flex; gap:14px; flex-wrap:wrap; opacity:0; animation:fadeUp 0.8s ease forwards 0.8s; }
+  .btn-primary { background:var(--green); color:#fff; padding:14px 30px; border-radius:50px; font-size:0.95rem; font-weight:700; text-decoration:none; border:none; cursor:pointer; transition:all 0.3s; box-shadow:0 8px 24px rgba(44,95,46,0.3); letter-spacing:0.5px; }
+  .btn-primary:hover { background:var(--green-light); transform:translateY(-2px); box-shadow:0 12px 32px rgba(44,95,46,0.4); }
+  .btn-whatsapp { background:#25D366; color:#fff; padding:14px 26px; border-radius:50px; font-size:0.95rem; font-weight:700; text-decoration:none; display:flex; align-items:center; gap:8px; transition:all 0.3s; box-shadow:0 8px 24px rgba(37,211,102,0.3); }
+  .btn-whatsapp:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(37,211,102,0.4); }
+  .hero-illustration { position:absolute; right:5%; top:50%; transform:translateY(-50%); z-index:1; opacity:0; animation:fadeLeft 1s ease forwards 0.6s; }
+  .hero-illustration svg { animation:float 4s ease-in-out infinite; filter:drop-shadow(0 20px 40px rgba(200,129,26,0.25)); }
+  @keyframes float { 0%,100%{transform:translateY(-50%) translateX(0)}50%{transform:translateY(calc(-50% - 16px)) translateX(4px)} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeLeft { from{opacity:0;transform:translate(40px,-50%)}to{opacity:1;transform:translate(0,-50%)} }
+
+  /* TRUST BAR */
+  .trust-bar { background:var(--green); padding:28px 5%; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+  .trust-item { display:flex; align-items:center; gap:14px; color:#fff; }
+  .trust-icon { font-size:1.8rem; background:rgba(255,255,255,0.12); border-radius:50%; width:50px; height:50px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .trust-item strong { display:block; font-size:0.95rem; font-weight:800; }
+  .trust-item span { font-size:0.75rem; opacity:0.75; }
+
+  /* SECTION COMMONS */
+  section { padding: 88px 5%; }
+  .section-tag { font-size:0.73rem; letter-spacing:4px; text-transform:uppercase; color:var(--gold-dark); font-weight:700; margin-bottom:10px; }
+  .section-title { font-size:clamp(1.9rem,4vw,2.9rem); font-weight:700; color:var(--green); line-height:1.2; margin-bottom:14px; }
+  .section-subtitle { font-size:0.97rem; color:var(--text-light); line-height:1.75; max-width:540px; }
+  .reveal { opacity:0; transform:translateY(40px); transition:opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+  .wheat-divider { text-align:center; padding:6px 0; font-size:1.3rem; letter-spacing:12px; color:var(--gold); opacity:0.55; }
+
+  /* OUR STORY */
+  #story { background:var(--cream); }
+  .story-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:48px; }
+  .story-text p { color:var(--text-mid); line-height:1.8; margin-bottom:15px; font-size:0.97rem; }
+  .story-text p strong { color:var(--green); }
+  .story-signature { margin-top:26px; font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-style:italic; color:var(--orange); }
+  .story-image-frame { display:flex; align-items:center; justify-content:center; }
+  .story-circle { width:320px; height:320px; border-radius:50%; background:linear-gradient(135deg,var(--gold-light),var(--gold)); display:flex; align-items:center; justify-content:center; position:relative; box-shadow:0 0 60px rgba(245,166,35,0.35),0 0 120px rgba(245,166,35,0.15); }
+  .story-circle::before { content:''; position:absolute; inset:-12px; border-radius:50%; border:2px dashed rgba(245,166,35,0.5); animation:spin 20s linear infinite; }
+  @keyframes spin { from{transform:rotate(0deg)}to{transform:rotate(360deg)} }
+  .story-circle-inner { font-size:5.5rem; filter:drop-shadow(0 8px 16px rgba(0,0,0,0.12)); }
+  .story-badge { position:absolute; bottom:12px; right:12px; background:var(--green); color:#fff; border-radius:50%; width:76px; height:76px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:0.6rem; font-weight:800; text-align:center; letter-spacing:1px; text-transform:uppercase; line-height:1.3; box-shadow:0 4px 16px rgba(44,95,46,0.4); }
+  .story-badge strong { font-size:1.25rem; line-height:1; }
+
+  /* PRODUCTS */
+  #products { background:var(--offwhite); }
+  .products-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:44px; flex-wrap:wrap; gap:18px; }
+  .products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; }
+  .product-card { background:var(--cream); border-radius:24px; padding:34px 26px; position:relative; overflow:hidden; border:1.5px solid rgba(245,166,35,0.2); transition:all 0.4s ease; }
+  .product-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; background:linear-gradient(90deg,var(--gold),var(--orange)); border-radius:24px 24px 0 0; }
+  .product-card:hover { transform:translateY(-8px); box-shadow:0 24px 60px rgba(200,129,26,0.2); border-color:var(--gold); }
+  .product-emoji { font-size:3.2rem; margin-bottom:18px; display:block; }
+  .product-badge { position:absolute; top:20px; right:20px; background:var(--orange); color:#fff; font-size:0.68rem; font-weight:800; padding:4px 11px; border-radius:20px; letter-spacing:1px; text-transform:uppercase; }
+  .product-name { font-size:1.45rem; font-weight:700; color:var(--green); margin-bottom:7px; }
+  .product-tagline { font-size:0.82rem; color:var(--text-light); font-style:italic; margin-bottom:14px; line-height:1.5; }
+  .product-desc { font-size:0.88rem; color:var(--text-mid); line-height:1.65; margin-bottom:18px; }
+  .product-sizes { display:flex; gap:7px; margin-bottom:18px; flex-wrap:wrap; }
+  .size-tag { background:var(--cream-dark); border:1px solid rgba(245,166,35,0.3); color:var(--text-mid); padding:4px 11px; border-radius:20px; font-size:0.75rem; font-weight:700; }
+  .product-price { font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:700; color:var(--orange); margin-bottom:18px; }
+  .product-price span { font-size:0.78rem; color:var(--text-light); font-family:'Nunito',sans-serif; font-weight:400; }
+  .btn-order { width:100%; background:var(--green); color:#fff; border:none; padding:13px; border-radius:50px; font-size:0.88rem; font-weight:700; cursor:pointer; transition:all 0.3s; letter-spacing:0.5px; font-family:'Nunito',sans-serif; }
+  .btn-order:hover { background:var(--green-light); box-shadow:0 8px 24px rgba(44,95,46,0.3); }
+
+  /* QUALITY */
+  #quality { background:var(--green); color:#fff; text-align:center; }
+  #quality .section-title { color:var(--gold-light); }
+  .quality-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:52px; }
+  .quality-card { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.12); border-radius:20px; padding:38px 26px; transition:all 0.3s; }
+  .quality-card:hover { background:rgba(255,255,255,0.12); transform:translateY(-4px); }
+  .quality-icon { font-size:2.8rem; margin-bottom:18px; display:block; }
+  .quality-card h3 { font-size:1.35rem; color:var(--gold-light); margin-bottom:10px; }
+  .quality-card p { font-size:0.88rem; color:rgba(255,255,255,0.7); line-height:1.7; }
+
+  /* TESTIMONIALS */
+  #testimonials { background:var(--cream); }
+  .testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:44px; }
+  .testi-card { background:var(--offwhite); border-radius:20px; padding:30px 26px; border:1.5px solid rgba(245,166,35,0.15); transition:all 0.3s; }
+  .testi-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(200,129,26,0.12); border-color:var(--gold-light); }
+  .testi-quote-mark { font-family:'Cormorant Garamond',serif; font-size:4.5rem; color:var(--gold-light); line-height:0.5; margin-bottom:14px; display:block; }
+  .testi-stars { color:var(--gold); font-size:0.95rem; letter-spacing:2px; margin-bottom:12px; }
+  .testi-text { font-size:0.92rem; color:var(--text-mid); line-height:1.7; font-style:italic; margin-bottom:22px; }
+  .testi-author { display:flex; align-items:center; gap:11px; }
+  .testi-avatar { width:42px; height:42px; border-radius:50%; background:linear-gradient(135deg,var(--gold-light),var(--orange)); display:flex; align-items:center; justify-content:center; font-size:1.15rem; }
+  .testi-name { font-weight:700; color:var(--green); font-size:0.92rem; }
+  .testi-city { font-size:0.75rem; color:var(--text-light); }
+
+  /* GALLERY */
+  #gallery { background:var(--offwhite); padding:88px 5%; }
+  .gallery-grid { display:grid; grid-template-columns:repeat(4,1fr); grid-template-rows:repeat(2,190px); gap:14px; margin-top:44px; }
+  .gallery-item { border-radius:16px; overflow:hidden; position:relative; display:flex; align-items:center; justify-content:center; transition:transform 0.3s; cursor:pointer; font-size:3.5rem; }
+  .gallery-item:hover { transform:scale(1.03); }
+  .gallery-item:nth-child(1) { grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg,#F5C96A,#E07B39); font-size:6rem; }
+  .gallery-item:nth-child(2) { background:linear-gradient(135deg,#d4e8d4,#a8d4a8); }
+  .gallery-item:nth-child(3) { background:linear-gradient(135deg,#ffe0b2,#ffcc80); }
+  .gallery-item:nth-child(4) { background:linear-gradient(135deg,#f8d7a0,#f0c060); }
+  .gallery-item:nth-child(5) { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); }
+  .gallery-label { position:absolute; bottom:0; left:0; right:0; background:linear-gradient(to top,rgba(0,0,0,0.5),transparent); color:#fff; font-size:0.78rem; font-weight:700; padding:18px 14px 10px; text-align:center; }
+
+  /* RECIPES */
+  #recipes { background:var(--cream); }
+  .recipes-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:44px; }
+  .recipe-card { background:var(--offwhite); border-radius:20px; overflow:hidden; border:1.5px solid rgba(245,166,35,0.15); transition:all 0.3s; }
+  .recipe-card:hover { transform:translateY(-6px); box-shadow:0 20px 48px rgba(200,129,26,0.15); }
+  .recipe-top { height:130px; display:flex; align-items:center; justify-content:center; font-size:4rem; }
+  .recipe-card:nth-child(1) .recipe-top { background:linear-gradient(135deg,#FDE8B8,#F5C96A); }
+  .recipe-card:nth-child(2) .recipe-top { background:linear-gradient(135deg,#d4e8d4,#7fc97f); }
+  .recipe-card:nth-child(3) .recipe-top { background:linear-gradient(135deg,#ffe0b2,#E07B39); }
+  .recipe-body { padding:22px; }
+  .recipe-name { font-size:1.25rem; font-weight:700; color:var(--green); margin-bottom:7px; }
+  .recipe-desc { font-size:0.85rem; color:var(--text-light); line-height:1.6; margin-bottom:16px; }
+  .recipe-meta { display:flex; gap:14px; margin-bottom:18px; font-size:0.75rem; color:var(--text-mid); font-weight:700; flex-wrap:wrap; }
+  .btn-recipe { background:transparent; border:2px solid var(--green); color:var(--green); padding:9px 22px; border-radius:50px; font-size:0.83rem; font-weight:700; cursor:pointer; transition:all 0.3s; font-family:'Nunito',sans-serif; }
+  .btn-recipe:hover { background:var(--green); color:#fff; }
+
+  /* CONTACT */
+  #contact { background:var(--offwhite); }
+  .contact-grid { display:grid; grid-template-columns:1fr 1.2fr; gap:60px; align-items:start; margin-top:44px; }
+  .contact-info h3 { font-size:1.75rem; color:var(--green); margin-bottom:14px; }
+  .contact-info p { color:var(--text-mid); line-height:1.75; margin-bottom:28px; font-size:0.95rem; }
+  .contact-detail { display:flex; align-items:center; gap:11px; margin-bottom:14px; font-size:0.88rem; color:var(--text-mid); font-weight:600; }
+  .contact-detail span:first-child { font-size:1.2rem; width:32px; }
+  .whatsapp-big { display:inline-flex; align-items:center; gap:10px; background:#25D366; color:#fff; padding:13px 26px; border-radius:50px; font-size:0.92rem; font-weight:800; text-decoration:none; margin-top:22px; transition:all 0.3s; box-shadow:0 8px 24px rgba(37,211,102,0.3); }
+  .whatsapp-big:hover { transform:translateY(-2px); box-shadow:0 12px 32px rgba(37,211,102,0.4); }
+  .contact-form { background:var(--cream); border-radius:24px; padding:38px; border:1.5px solid rgba(245,166,35,0.2); }
+  .form-group { margin-bottom:18px; }
+  .form-group label { display:block; font-size:0.78rem; font-weight:700; color:var(--text-mid); margin-bottom:7px; letter-spacing:0.5px; text-transform:uppercase; }
+  .form-group input, .form-group select, .form-group textarea { width:100%; padding:12px 15px; border-radius:12px; border:1.5px solid rgba(245,166,35,0.25); background:var(--offwhite); font-family:'Nunito',sans-serif; font-size:0.88rem; color:var(--text-dark); outline:none; transition:border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color:var(--gold); }
+  .form-group textarea { height:95px; resize:vertical; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .btn-submit { width:100%; background:var(--green); color:#fff; border:none; padding:14px; border-radius:50px; font-size:0.97rem; font-weight:800; cursor:pointer; transition:all 0.3s; letter-spacing:0.5px; margin-top:6px; font-family:'Nunito',sans-serif; }
+  .btn-submit:hover { background:var(--green-light); box-shadow:0 8px 24px rgba(44,95,46,0.3); }
+
+  /* FOOTER */
+  footer { background:#1A2E1A; color:rgba(255,255,255,0.8); padding:58px 5% 30px; }
+  .footer-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr; gap:44px; margin-bottom:44px; }
+  .footer-brand-name { font-family:'Cormorant Garamond',serif; font-size:1.45rem; font-weight:700; color:var(--gold-light); line-height:1.1; }
+  .footer-brand-name span { display:block; font-size:0.65rem; font-family:'Nunito',sans-serif; font-weight:700; color:rgba(255,255,255,0.45); letter-spacing:2px; margin-top:2px; }
+  .footer-tagline { font-size:0.87rem; color:rgba(255,255,255,0.52); line-height:1.65; margin-top:14px; }
+  .footer-socials { display:flex; gap:10px; margin-top:22px; }
+  .social-btn { width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08); display:flex; align-items:center; justify-content:center; font-size:1rem; text-decoration:none; transition:all 0.3s; border:1px solid rgba(255,255,255,0.1); }
+  .social-btn:hover { background:var(--gold); border-color:var(--gold); transform:translateY(-2px); }
+  .footer-col h4 { font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--gold-light); margin-bottom:18px; font-weight:600; }
+  .footer-col ul { list-style:none; }
+  .footer-col ul li { margin-bottom:9px; }
+  .footer-col ul li a { color:rgba(255,255,255,0.52); text-decoration:none; font-size:0.84rem; transition:color 0.2s; }
+  .footer-col ul li a:hover { color:var(--gold-light); }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.08); padding-top:22px; display:flex; justify-content:space-between; align-items:center; font-size:0.78rem; color:rgba(255,255,255,0.32); flex-wrap:wrap; gap:10px; }
+  .footer-bottom span { color:var(--gold); }
+
+  /* RESPONSIVE */
+  @media (max-width:900px) {
+    .hero-illustration { display:none; }
+    .story-grid, .contact-grid { grid-template-columns:1fr; gap:36px; }
+    .story-image-frame { order:-1; }
+    .products-grid, .quality-grid, .testimonials-grid, .recipes-grid { grid-template-columns:1fr; }
+    .gallery-grid { grid-template-columns:repeat(2,1fr); }
+    .gallery-item:nth-child(1) { grid-column:span 2; grid-row:span 1; }
+    .footer-grid { grid-template-columns:1fr; gap:28px; }
+    .trust-bar { grid-template-columns:repeat(2,1fr); }
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .products-header { flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width:500px) {
+    section { padding:58px 5%; }
+    .gallery-grid { grid-template-columns:1fr; }
+    .gallery-item:nth-child(1) { grid-column:span 1; }
+    .form-row { grid-template-columns:1fr; }
+    .trust-bar { grid-template-columns:1fr; }
+    .hero-btns { flex-direction:column; }
+    .story-circle { width:250px; height:250px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">
+    <span class="wheat-icon">🌾</span>
+    <div class="nav-logo-text">Sai Prasad<span>Chakki Fresh Aata</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#quality">Quality</a></li>
+    <li><a href="#recipes">Recipes</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home" onclick="toggleMenu()">🏠 Home</a>
+  <a href="#story" onclick="toggleMenu()">📖 Our Story</a>
+  <a href="#products" onclick="toggleMenu()">🌾 Products</a>
+  <a href="#quality" onclick="toggleMenu()">✨ Quality</a>
+  <a href="#recipes" onclick="toggleMenu()">🫓 Recipes</a>
+  <a href="#contact" onclick="toggleMenu()">📞 Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-content">
+    <p class="hero-devanagari">शुद्ध • ताज़ा • प्रेम से</p>
+    <h1 class="hero-title">Pure Goodness.<br/><em>Every Grain,</em><br/>Every Roti.</h1>
+    <p class="hero-subtitle">Freshly stone-ground chakki atta, crafted with love from the finest wheat fields. Because every roti you roll is a moment of love — and it deserves the very best.</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn-primary">🌾 Explore Our Atta</a>
+      <a href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20Sai%20Prasad%20Aata" class="btn-whatsapp" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Order on WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="hero-illustration">
+    <svg width="360" height="360" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="180" cy="180" r="160" fill="rgba(245,166,35,0.12)" stroke="rgba(245,166,35,0.3)" stroke-width="1.5" stroke-dasharray="8 6"/>
+      <circle cx="180" cy="180" r="120" fill="rgba(245,166,35,0.09)"/>
+      <g transform="translate(180,180)">
+        <line x1="0" y1="75" x2="0" y2="-75" stroke="#C8811A" stroke-width="3" stroke-linecap="round"/>
+        <ellipse cx="0" cy="-75" rx="10" ry="18" fill="#F5A623"/>
+        <ellipse cx="0" cy="-57" rx="9" ry="16" fill="#E09020"/>
+        <ellipse cx="0" cy="-41" rx="8" ry="13" fill="#F5A623"/>
+        <line x1="-28" y1="65" x2="-28" y2="-58" stroke="#C8811A" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="-28" cy="-58" rx="9" ry="15" fill="#E07B39"/>
+        <ellipse cx="-28" cy="-41" rx="8" ry="13" fill="#F5A623"/>
+        <line x1="-52" y1="55" x2="-52" y2="-38" stroke="#C8811A" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="-52" cy="-38" rx="8" ry="13" fill="#E09020"/>
+        <ellipse cx="-52" cy="-24" rx="7" ry="11" fill="#F5A623"/>
+        <line x1="28" y1="65" x2="28" y2="-58" stroke="#C8811A" stroke-width="2.5" stroke-linecap="round"/>
+        <ellipse cx="28" cy="-58" rx="9" ry="15" fill="#E07B39"/>
+        <ellipse cx="28" cy="-41" rx="8" ry="13" fill="#F5A623"/>
+        <line x1="52" y1="55" x2="52" y2="-38" stroke="#C8811A" stroke-width="2" stroke-linecap="round"/>
+        <ellipse cx="52" cy="-38" rx="8" ry="13" fill="#E09020"/>
+        <ellipse cx="52" cy="-24" rx="7" ry="11" fill="#F5A623"/>
+        <path d="M0,18 Q-28,-8 -18,-38" stroke="#2C5F2E" stroke-width="2" fill="none"/>
+        <path d="M0,18 Q28,-8 18,-38" stroke="#2C5F2E" stroke-width="2" fill="none"/>
+        <path d="M-28,8 Q-52,-4 -44,-28" stroke="#2C5F2E" stroke-width="1.5" fill="none"/>
+        <path d="M28,8 Q52,-4 44,-28" stroke="#2C5F2E" stroke-width="1.5" fill="none"/>
+        <circle cx="0" cy="85" r="38" fill="rgba(245,166,35,0.2)" stroke="rgba(245,166,35,0.4)" stroke-width="1.5"/>
+        <text x="0" y="91" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="13" fill="#C8811A" font-weight="600">chakki</text>
+      </g>
+      <circle cx="55" cy="75" r="4" fill="rgba(245,166,35,0.4)"/>
+      <circle cx="305" cy="95" r="3" fill="rgba(224,123,57,0.4)"/>
+      <circle cx="48" cy="268" r="5" fill="rgba(44,95,46,0.3)"/>
+      <circle cx="315" cy="258" r="4" fill="rgba(245,166,35,0.4)"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar reveal">
+  <div class="trust-item"><div class="trust-icon">🌾</div><div><strong>50+ Years Heritage</strong><span>Trusted since generations</span></div></div>
+  <div class="trust-item"><div class="trust-icon">🌿</div><div><strong>100% Natural</strong><span>No chemicals, ever</span></div></div>
+  <div class="trust-item"><div class="trust-icon">🪨</div><div><strong>Stone Ground</strong><span>Traditional chakki method</span></div></div>
+  <div class="trust-item"><div class="trust-icon">💚</div><div><strong>No Preservatives</strong><span>Fresh from the mill</span></div></div>
+</div>
+
+<!-- OUR STORY -->
+<section id="story">
+  <div class="wheat-divider">🌾 ✦ 🌾 ✦ 🌾</div><br/>
+  <div class="story-grid reveal">
+    <div class="story-text">
+      <p class="section-tag">Our Story</p>
+      <h2 class="section-title">A Love Story<br/><em>Baked Into Every Roti</em></h2>
+      <p>It started with a grandmother who believed that <strong>the heart of a home lives in its kitchen.</strong> Three generations ago, our family set up a small stone chakki in Pune, grinding the finest wheat with patience, love, and an unshakeable commitment to purity.</p>
+      <p>Today, Sai Prasad Chakki Fresh Aata is still made the same way — <strong>slowly, carefully, and with deep love.</strong> We source wheat from trusted farmers, stone-grind it fresh, and pack it without a single additive or preservative.</p>
+      <p>Because when your family sits together over soft, warm rotis — <strong>that moment deserves nothing but the very best.</strong></p>
+      <div class="story-signature">— The Sai Prasad Family 🌾</div>
+    </div>
+    <div class="story-image-frame">
+      <div class="story-circle">
+        <div class="story-circle-inner">🫓</div>
+        <div class="story-badge"><strong>50+</strong>Years of<br/>Love</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="products-header reveal">
+    <div>
+      <p class="section-tag">Our Products</p>
+      <h2 class="section-title">Atta That Feels<br/><em>Like Home</em></h2>
+    </div>
+    <p class="section-subtitle">Every bag carries the warmth of tradition and the promise of softness in every roti.</p>
+  </div>
+  <div class="products-grid">
+    <div class="product-card reveal">
+      <div class="product-badge">Bestseller</div>
+      <span class="product-emoji">🌾</span>
+      <div class="product-name">Whole Wheat Atta</div>
+      <div class="product-tagline">"Soft rotis that melt your heart, every single time"</div>
+      <div class="product-desc">Stone-ground from premium whole wheat. Rich in fibre, natural bran intact. Makes the softest, most pliable rotis you've ever tasted.</div>
+      <div class="product-sizes"><span class="size-tag">1 kg</span><span class="size-tag">5 kg</span><span class="size-tag">10 kg</span></div>
+      <div class="product-price">₹65 <span>/ 1 kg onwards</span></div>
+      <button class="btn-order" onclick="orderWhatsApp('Whole Wheat Atta')">Order Now 🌾</button>
+    </div>
+    <div class="product-card reveal" style="transition-delay:0.1s">
+      <div class="product-badge" style="background:var(--green)">New</div>
+      <span class="product-emoji">🌿</span>
+      <div class="product-name">Multigrain Atta</div>
+      <div class="product-tagline">"Nourishment for the whole family, in every bite"</div>
+      <div class="product-desc">A wholesome blend of wheat, ragi, jowar, bajra and oats. Packed with nutrients, naturally delicious, and loved by kids and elders alike.</div>
+      <div class="product-sizes"><span class="size-tag">1 kg</span><span class="size-tag">5 kg</span><span class="size-tag">10 kg</span></div>
+      <div class="product-price">₹80 <span>/ 1 kg onwards</span></div>
+      <button class="btn-order" onclick="orderWhatsApp('Multigrain Atta')">Order Now 🌿</button>
+    </div>
+    <div class="product-card reveal" style="transition-delay:0.2s">
+      <div class="product-badge" style="background:var(--orange)">Premium</div>
+      <span class="product-emoji">✨</span>
+      <div class="product-name">Sharbati Atta</div>
+      <div class="product-tagline">"Golden wheat, golden rotis — the richest flour you'll try"</div>
+      <div class="product-desc">Crafted from Madhya Pradesh's finest Sharbati wheat — naturally sweet, golden-hued, and exceptionally soft. A truly premium experience.</div>
+      <div class="product-sizes"><span class="size-tag">1 kg</span><span class="size-tag">5 kg</span><span class="size-tag">10 kg</span></div>
+      <div class="product-price">₹95 <span>/ 1 kg onwards</span></div>
+      <button class="btn-order" onclick="orderWhatsApp('Sharbati Atta')">Order Now ✨</button>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section id="quality">
+  <p class="section-tag" style="color:var(--gold-light); text-align:center">Our Promise</p>
+  <h2 class="section-title reveal" style="text-align:center">The Sai Prasad Promise —<br/><em>Because Your Family Deserves the Best</em></h2>
+  <p class="section-subtitle reveal" style="color:rgba(255,255,255,0.7); margin:0 auto 8px; text-align:center">We don't cut corners. We don't take shortcuts. Every grain that goes into your home has been chosen, cleaned, and ground with absolute care.</p>
+  <div class="quality-grid">
+    <div class="quality-card reveal"><span class="quality-icon">🪨</span><h3>Stone Ground Process</h3><p>Traditional chakki stone grinding preserves natural nutrients, oils, and flavour that high-speed industrial mills destroy. Slower grinding, better atta — it's that simple.</p></div>
+    <div class="quality-card reveal" style="transition-delay:0.1s"><span class="quality-icon">🚜</span><h3>Farm-to-Pack Freshness</h3><p>We work directly with trusted farmers from Punjab and Madhya Pradesh. Our wheat travels from field to your kitchen with minimal handling and maximum freshness.</p></div>
+    <div class="quality-card reveal" style="transition-delay:0.2s"><span class="quality-icon">🌿</span><h3>Zero Additives, Always</h3><p>No bleaching. No maida mixing. No preservatives. No shortcuts. Just pure, honest wheat flour — exactly as nature intended it to be.</p></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="reveal" style="text-align:center; margin-bottom:8px">
+    <p class="section-tag" style="text-align:center">What Families Say</p>
+    <h2 class="section-title" style="text-align:center">Made With Love,<br/><em>Loved By Families</em></h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">My mother-in-law said my rotis were finally as soft as hers — and she's been making them for 40 years! All thanks to Sai Prasad atta. The difference is unbelievable.</p>
+      <div class="testi-author"><div class="testi-avatar">👩</div><div><div class="testi-name">Priya Sharma</div><div class="testi-city">📍 Pune, Maharashtra</div></div></div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.1s">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The multigrain atta has changed our family's health and my kids don't even notice — they just love how the rotis taste. Pure, wholesome, and absolutely delicious.</p>
+      <div class="testi-author"><div class="testi-avatar">👨</div><div><div class="testi-name">Rajesh Patel</div><div class="testi-city">📍 Ahmedabad, Gujarat</div></div></div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.2s">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I've been ordering the Sharbati Atta for 2 years now. The golden colour, the aroma, the softness — it reminds me of my nani's kitchen. This atta has a soul.</p>
+      <div class="testi-author"><div class="testi-avatar">👩‍🦱</div><div><div class="testi-name">Sunita Kulkarni</div><div class="testi-city">📍 Nashik, Maharashtra</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="reveal" style="text-align:center">
+    <p class="section-tag" style="text-align:center">Our World</p>
+    <h2 class="section-title" style="text-align:center">From Chakki to <em>Your Kitchen</em></h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item reveal">🌾<div class="gallery-label">Our Wheat Fields</div></div>
+    <div class="gallery-item reveal" style="transition-delay:0.1s">🪨<div class="gallery-label">Stone Chakki</div></div>
+    <div class="gallery-item reveal" style="transition-delay:0.15s">🫓<div class="gallery-label">Soft Rotis</div></div>
+    <div class="gallery-item reveal" style="transition-delay:0.2s">📦<div class="gallery-label">Fresh Packing</div></div>
+    <div class="gallery-item reveal" style="transition-delay:0.25s">👨‍👩‍👧<div class="gallery-label">Happy Families</div></div>
+  </div>
+</section>
+
+<!-- RECIPES -->
+<section id="recipes">
+  <div class="reveal">
+    <p class="section-tag">Recipe Love</p>
+    <h2 class="section-title">What Will You Make<br/><em>Today? 🫓</em></h2>
+    <p class="section-subtitle">Our atta was born to be cooked. Here are a few recipes to inspire your kitchen magic.</p>
+  </div>
+  <div class="recipes-grid">
+    <div class="recipe-card reveal">
+      <div class="recipe-top">🫓</div>
+      <div class="recipe-body">
+        <div class="recipe-name">Classic Phulka Roti</div>
+        <div class="recipe-desc">Soft, pillowy rotis that puff up beautifully over the flame. The kind your family will ask for every single meal.</div>
+        <div class="recipe-meta"><span>⏱ 20 mins</span><span>👥 4 servings</span><span>🌾 Whole Wheat</span></div>
+        <button class="btn-recipe">See Recipe →</button>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:0.1s">
+      <div class="recipe-top">🥙</div>
+      <div class="recipe-body">
+        <div class="recipe-name">Butter Wheat Paratha</div>
+        <div class="recipe-desc">Flaky, golden, buttery parathas made with love. Perfect for lazy Sunday mornings with achaar and dahi on the side.</div>
+        <div class="recipe-meta"><span>⏱ 30 mins</span><span>👥 3 servings</span><span>✨ Sharbati</span></div>
+        <button class="btn-recipe">See Recipe →</button>
+      </div>
+    </div>
+    <div class="recipe-card reveal" style="transition-delay:0.2s">
+      <div class="recipe-top">🌽</div>
+      <div class="recipe-body">
+        <div class="recipe-name">Missi Roti</div>
+        <div class="recipe-desc">A rustic, spiced flatbread from Rajasthan — earthy, nourishing, and deeply satisfying. Made beautifully with our multigrain atta.</div>
+        <div class="recipe-meta"><span>⏱ 25 mins</span><span>👥 4 servings</span><span>🌿 Multigrain</span></div>
+        <button class="btn-recipe">See Recipe →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="reveal">
+    <p class="section-tag">Get in Touch</p>
+    <h2 class="section-title">Let's Bring Freshness<br/><em>To Your Kitchen</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>Order Fresh. Order Direct.</h3>
+      <p>Skip the middleman. Order directly from us and get the freshest chakki atta delivered right to your door. Bulk orders for families and businesses are most welcome!</p>
+      <div class="contact-detail"><span>📍</span><span>Sai Prasad Chakki, Pune, Maharashtra</span></div>
+      <div class="contact-detail"><span>📞</span><span>+91 99999 99999</span></div>
+      <div class="contact-detail"><span>✉️</span><span>hello@saiprasadaata.com</span></div>
+      <div class="contact-detail"><span>🕐</span><span>Mon–Sat, 9am to 6pm</span></div>
+      <a href="https://wa.me/919999999999?text=Hi!%20I%20want%20to%20order%20Sai%20Prasad%20Fresh%20Aata" class="whatsapp-big" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Chat & Order on WhatsApp
+      </a>
+    </div>
+    <div class="contact-form reveal" style="transition-delay:0.1s">
+      <div class="form-row">
+        <div class="form-group"><label>Your Name</label><input type="text" placeholder="Priya Sharma"/></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+91 98765 43210"/></div>
+      </div>
+      <div class="form-group"><label>Your City</label><input type="text" placeholder="Pune, Maharashtra"/></div>
+      <div class="form-group">
+        <label>Product Interest</label>
+        <select>
+          <option>Select an Atta...</option>
+          <option>Whole Wheat Atta (1kg)</option>
+          <option>Whole Wheat Atta (5kg)</option>
+          <option>Whole Wheat Atta (10kg)</option>
+          <option>Multigrain Atta (1kg)</option>
+          <option>Multigrain Atta (5kg)</option>
+          <option>Sharbati Atta (1kg)</option>
+          <option>Sharbati Atta (5kg)</option>
+          <option>Bulk / Business Order</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Message (optional)</label><textarea placeholder="Tell us anything — how much you need, special requests, or just say hello! 🌾"></textarea></div>
+      <button class="btn-submit" onclick="submitForm()">Send My Order Request 🌾</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">🌾 Sai Prasad Chakki Fresh Aata<span>PURE • NATURAL • WITH LOVE</span></div>
+      <p class="footer-tagline">From our chakki to your kitchen — every bag carries three generations of love, tradition, and the promise of the softest rotis you've ever made. <em>Made with love, ground with care.</em></p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" title="Instagram">📸</a>
+        <a href="#" class="social-btn" title="Facebook">👍</a>
+        <a href="https://wa.me/919999999999" class="social-btn" title="WhatsApp">💬</a>
+        <a href="#" class="social-btn" title="YouTube">▶️</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#products">Our Products</a></li>
+        <li><a href="#quality">Quality Promise</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Our Products</h4>
+      <ul>
+        <li><a href="#products">Whole Wheat Atta</a></li>
+        <li><a href="#products">Multigrain Atta</a></li>
+        <li><a href="#products">Sharbati Atta</a></li>
+        <li><a href="#contact">Bulk Orders</a></li>
+      </ul>
+      <br/>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:+919999999999">+91 99999 99999</a></li>
+        <li><a href="mailto:hello@saiprasadaata.com">hello@saiprasadaata.com</a></li>
+        <li><a href="#">Pune, Maharashtra</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2024 <span>Sai Prasad Chakki Fresh Aata</span>. All rights reserved. Made with ❤️ in Pune.</div>
+    <div>शुद्ध • ताज़ा • प्रेम से 🌾</div>
+  </div>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), 60);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  function orderWhatsApp(product) {
+    const msg = encodeURIComponent(`Hi! I'd like to order *${product}* from Sai Prasad Chakki Fresh Aata. Please share availability and pricing. 🌾`);
+    window.open(`https://wa.me/919999999999?text=${msg}`, '_blank');
+  }
+
+  function submitForm() {
+    alert('Thank you! We will reach out to you shortly. 🌾\n\nFor faster response, WhatsApp us directly!');
+  }
+</script>
+</body>
+</html>
