@@ -23,3 +23,19 @@ Sai Prasad Chakki Fresh Aata brings you the finest quality whole wheat flour, st
 ---
 
 Made with love in Maharashtra, India.
+
+## Why Choose Us?
+
+- Sourced from premium wheat grains
+- Hygienically processed
+- Affordable pricing for families
+- Trusted by local communities
+
+## Contact
+
+- Location: Maharashtra, India
+- Email: saiprasadaata@example.com
+
+---
+
+© 2026 Sai Prasad Chakki Fresh Aata. All rights reserved.
